@@ -8,7 +8,7 @@ export default function Home() {
 
   const handleEncode = async () => {
     try {
-      const res = await fetch('https://enigmawebsitebackend.onrender.com/encode', {
+      const res = await fetch('https://enigmawebsitebackend-1.onrender.com/encode', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text }),
