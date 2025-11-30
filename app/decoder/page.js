@@ -46,19 +46,19 @@ export default function About() {
           placeholder="Ciphertext"
           value={ciphertext}
           onChange={(e) => setCiphertext(e.target.value)}
-          className="p-2 border rounded"
+          className="w-full border rounded bg-gray-900 text-white p-3 text-sm resize-vertical"
         />
         <input
           type="text"
           placeholder="Plaintext (crib)"
           value={plaintext}
           onChange={(e) => setPlaintext(e.target.value)}
-          className="p-2 border rounded"
+          className="w-full border rounded bg-gray-900 text-white p-3 text-sm resize-vertical"
         />
         <button
           onClick={handleSubmit}
           disabled={isLoading}
-          className={`bg-blue-500 text-white p-2 rounded transition 
+          className={`bg-gray-900 text-white p-2 rounded transition 
             ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
           {isLoading ? 'Decoding...' : 'Decode'}
