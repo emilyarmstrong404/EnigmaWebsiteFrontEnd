@@ -40,11 +40,11 @@ export default function Home() {
           placeholder="Type here..."
           value={text}
           onChange={(e) => setText(e.target.value)}
-          className="w-full border rounded p-3 text-sm resize-vertical"
+          className="w-full border rounded bg-gray-900 text-white p-3 text-sm resize-vertical"
         />
         <button
           onClick={handleEncode}
-          className="bg-blue-500 text-white p-2 rounded"
+          className="bg-gray-900 text-white p-2 rounded"
         >
           Encode
         </button>
