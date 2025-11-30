@@ -5,8 +5,11 @@ import Link from 'next/link';
 export default function Home() {
   const [text, setText] = useState('');
   const [encoded, setEncoded] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleEncode = async () => {
+    setLoading(true);
+    setEncoded('');
     try {
       const res = await fetch('https://enigmawebsitebackend-1.onrender.com/encode', {
         method: 'POST',
@@ -17,13 +20,14 @@ export default function Home() {
       setEncoded(data.encoded);
     } catch (err) {
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen gap-6 p-6">
       {/* Navigation tabs */}
-
       <div className="fixed top-40 left-0 w-full p-4 shadow z-50">
         <div className="flex gap-4 justify-center">
           <Link href="/decoder" className="px-4 py-2 rounded bg-gray-900 hover:bg-gray-800">
@@ -44,11 +48,20 @@ export default function Home() {
         />
         <button
           onClick={handleEncode}
-          className="bg-gray-900 text-white p-2 rounded"
+          disabled={loading}
+          className={`bg-gray-900 text-white p-2 rounded transition 
+            ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
-          Encode
+          {loading ? 'Encoding...' : 'Encode'}
         </button>
-        {encoded && (
+
+        {/* Loading Message */}
+        {loading && (
+          <p className="text-sm text-gray-400">Loading...</p>
+        )}
+
+        {/* Encoded Output */}
+        {!loading && encoded && (
           <div>
             <h3 className="font-semibold mt-2">Encoded message:</h3>
             <p className="break-words">{encoded}</p>
