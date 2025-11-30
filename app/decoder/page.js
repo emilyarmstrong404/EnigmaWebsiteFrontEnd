@@ -1,18 +1,3 @@
-// import Link from 'next/link';
-// export default function About() {
-//     return (
-//       <main className="flex flex-col items-center justify-center min-h-screen p-6">
-//         <div className="flex gap-4">
-//           <Link href="/" className="px-4 py-2 rounded hover:bg-gray-800">
-//             Home
-//           </Link>
-//         </div>
-//         <h1 className="text-2xl font-semibold mt-30">About Emily's Enigma Emulator</h1>
-//         <p>This is a page that tells you more about the app!</p>
-//       </main>
-//     );
-//   }
-
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
@@ -37,7 +22,7 @@ export default function About() {
     } catch (err) {
       console.error(err);
     } finally {
-      setIsLoading(false); // stop loading no matter what
+      setIsLoading(false);
     }
   };
 
@@ -72,9 +57,11 @@ export default function About() {
         />
         <button
           onClick={handleSubmit}
-          className="bg-blue-500 text-white p-2 rounded"
+          disabled={isLoading}
+          className={`bg-blue-500 text-white p-2 rounded transition 
+            ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
-          Decode
+          {isLoading ? 'Decoding...' : 'Decode'}
         </button>
       </div>
 
@@ -95,6 +82,9 @@ export default function About() {
       ) : results && results.length === 0 ? (
         <p className="mt-4 text-gray-500">No results found</p>
       ) : null}
+
+
+      <h2 className="text-lg font-semibold">Input alphabetic characters only with no spaces</h2>
     </main>
   );
 }

@@ -68,6 +68,8 @@ export default function Home() {
           </div>
         )}
       </div>
+
+      <h2 className="text-lg font-semibold">Input alphabetic characters only with no spaces</h2>
     </main>
   );
 }
