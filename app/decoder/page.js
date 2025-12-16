@@ -12,7 +12,7 @@ export default function About() {
     setIsLoading(true);
     setResults(null); 
     try {
-      const res = await fetch('https://enigmawebsitebackend-1.onrender.com/crib', {
+      const res = await fetch('https://enigmawebsitebackend-2.onrender.com/crib', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ plaintext, ciphertext }),

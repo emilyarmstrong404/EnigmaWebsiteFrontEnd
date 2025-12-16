@@ -23,7 +23,7 @@ export default function Home() {
 
     try {
       const res = await fetch(
-        'https://enigmawebsitebackend-1.onrender.com/encode',
+        'https://enigmawebsitebackend-2.onrender.com/encode',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
